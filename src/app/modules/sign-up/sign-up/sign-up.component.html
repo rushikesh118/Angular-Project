@@ -1,0 +1,53 @@
+<div class="login-container" fxLayout="column" fxLayoutAlign="center center">
+    <mat-card style="padding:20px;" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px">
+        <div style="font-size: 28px;font-weight: bolder;">SignUp Form</div>
+        <form fxLayout="column">
+            <div fxLayout="row" fxLayoutGap="20px">
+                <mat-form-field appearance="outline" [style.width.px]=200>
+                    <mat-label>Enter your First name</mat-label>
+                    <input matInput placeholder="Enter first name" [formControl]="firstName" required>
+                    <!-- <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Enter your Last name</mat-label>
+                    <input matInput placeholder="Enter last name" [formControl]="lastName" required>
+                    <!-- <mat-error *ngIf="password.invalid ">{{getPasswordErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+            </div>
+            <mat-form-field appearance="outline">
+                <mat-label>Date Of Birth</mat-label>
+                <input matInput [matDatepicker]="dp3" disabled>
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
+                <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter your Email</mat-label>
+                <input matInput placeholder="Enter first name" [formControl]="email" required>
+                <!-- <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter Username</mat-label>
+                <input matInput placeholder="Enter username" [formControl]="password" #input required>
+                <!-- <mat-error *ngIf="password.invalid ">{{getPasswordErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter Password</mat-label>
+                <input matInput [formControl]="password" #input required>
+                <mat-error *ngIf="password.invalid ">{{getPasswordErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Conform Password</mat-label>
+                <input matInput [formControl]="password" #input required>
+                <!-- <mat-error *ngIf="password.invalid ">{{getPasswordErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+        </form>
+
+        <button mat-raised-button color="accent" [disabled]="email.invalid" (click)="loggedIn()">SUBMIT</button>
+        <div fxLayout="row" fxLayoutAlign="end">
+            Already have an account?<a routerLink="/login"
+                style="color:blue;text-decoration: none; font-size: 18px;font-weight: 500;">Log In</a>
+        </div>
+    </mat-card>
+
+</div>

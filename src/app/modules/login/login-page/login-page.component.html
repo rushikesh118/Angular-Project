@@ -1,0 +1,30 @@
+<div class="login-container" fxLayout="column" fxLayoutAlign="center center">
+    <mat-card style="padding:20px;" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px">
+        <div style="font-size: 28px;font-weight: bolder;">Login</div>
+        <form fxLayout="column">
+            <mat-form-field appearance="outline" [style.width.px]=400>
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="abc@abc.com" [formControl]="email" required>
+                <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter Password</mat-label>
+                <input matInput [formControl]="password" #input required>
+                <mat-error *ngIf="password.invalid ">{{getPasswordErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="end">
+                <a routerLink="/sign-up" style="color:blue;text-decoration: none;font-size: 14px;">
+                    forgot Password?
+                </a>
+            </div>
+        </form>
+
+        <button mat-raised-button color="accent" [disabled]="email.invalid || password.invalid"
+            (click)="loggedIn()">LOGIN</button>
+        <div fxLayout="row" fxLayoutAlign="end">
+            Don't have an account?<a routerLink="/sign-up"
+                style="color:blue;text-decoration: none; font-size: 18px;font-weight: 500;">signUp</a>
+        </div>
+    </mat-card>
+
+</div>
